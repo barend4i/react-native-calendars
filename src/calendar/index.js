@@ -50,7 +50,8 @@ class Calendar extends Component {
     displayLoadingIndicator: PropTypes.bool,
     // Do not show days of other months in month page. Default = false
     hideExtraDays: PropTypes.bool,
-
+    // render the number of agenda items in a day
+    renderAgendaCount: PropTypes.func,
     // Handler which gets executed on day press. Default = undefined
     onDayPress: PropTypes.func,
     // Handler which gets executed when visible month changes in calendar. Default = undefined
@@ -176,7 +177,9 @@ class Calendar extends Component {
             onPress={this.pressDay}
             day={day}
             marked={this.getDateMarking(day)}
+            number={this.getNumber(day)}
             markingExists={markingExists}
+            renderAgendaCount={this.props.renderAgendaCount}
           >
             {day.getDate()}
           </DayComp>
@@ -194,6 +197,24 @@ class Calendar extends Component {
       return dates;
     } else {
       return false;
+    }
+  }
+
+  getNumber(day) {
+    if (!this.props.markedDates) {
+      return false;
+    }
+    const dates = this.props.markedDates[day.toString('yyyy-MM-dd')] || EmptyArray;
+  
+    if (dates.length || dates) {
+      if (dates.number != null) {
+        return dates.number
+      } else {
+        return 0
+      }
+      
+    } else {
+      return 0;
     }
   }
 

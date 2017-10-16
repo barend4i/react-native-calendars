@@ -47,6 +47,8 @@ export default class AgendaView extends Component {
     renderDay: PropTypes.func,
     // specify how agenda knob should look like
     renderKnob: PropTypes.func,
+    // specify how agenda count should look like
+    renderAgendaCount: PropTypes.func,
     // specify how empty date content with no items should be rendered
     renderEmptyDay: PropTypes.func,
     // specify your item comparison function for increased performance
@@ -358,6 +360,7 @@ export default class AgendaView extends Component {
               monthFormat={this.props.monthFormat}
               pastScrollRange={this.props.pastScrollRange}
               futureScrollRange={this.props.futureScrollRange}
+              renderAgendaCount={this.props.renderAgendaCount}
             />
           </Animated.View>
           {knob}

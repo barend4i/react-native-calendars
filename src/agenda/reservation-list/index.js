@@ -23,6 +23,8 @@ class ReactComp extends Component {
     renderEmptyDate: PropTypes.func,
     // callback that gets called when day changes while scrolling agenda list
     onDayChange: PropTypes.func,
+    // render the number of agenda items in a day
+    renderAgendaCount: PropTypes.func,
     // onScroll ListView event
     onScroll: PropTypes.func,
     // the list of items that have to be displayed in agenda. If you want to render item as empty date
